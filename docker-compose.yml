@@ -22,7 +22,7 @@ services:
       dockerfile: Dockerfile
     container_name: boilerplate_app
     ports:
-      - '3000:3000'
+      - '4001:4001'
     environment:
       NODE_ENV: production
       DATABASE_URL: postgresql://boilerplate_user:Boiler@2025@db:5432/boilerplate_db
