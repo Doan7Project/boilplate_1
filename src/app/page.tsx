@@ -1,5 +1,5 @@
 import Image from "next/image";
-import prisma from "../services/PrismaService";
+import prisma from "@/src/prisma/PrismaService";
 export default async function Home() {
   const data = await prisma.project.findMany();
   console.log("data = ", data);
