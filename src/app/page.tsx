@@ -1,10 +1,17 @@
 import Image from "next/image";
+export const dynamic = "force-dynamic";
+
 import prisma from "@/src/prisma/PrismaService";
 export default async function Home() {
   const data = await prisma.project.findMany();
   console.log("data = ", data);
   return (
     <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
+      {
+        data.map((project) => (
+          <div key={project.id}>{project.title}</div>
+        ))
+      }
       <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
         <Image
           className="dark:invert"
