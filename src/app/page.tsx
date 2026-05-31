@@ -2,6 +2,7 @@ import Image from "next/image";
 export const dynamic = "force-dynamic";
 
 import prisma from "@/src/prisma/PrismaService";
+import { Button } from "../presentation/components/ui/button";
 export default async function Home() {
   const data = await prisma.project.findMany();
   console.log("data = ", data);
@@ -13,6 +14,9 @@ export default async function Home() {
         ))
       }
       <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
+        <Button variant="destructive" size="lg">
+          Hello World
+        </Button>
         <Image
           className="dark:invert"
           src="/next.svg"
