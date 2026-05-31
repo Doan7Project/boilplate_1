@@ -1,4 +1,4 @@
-import Aboutpage from "@/src/presentation/pages/about/page";
+import Aboutpage from "@/src/presentation/landing-page/about/page";
 
 function About() {
     return ( 
