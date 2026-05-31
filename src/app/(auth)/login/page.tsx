@@ -1,7 +1,9 @@
+import LoginPage from "@/src/presentation/landing-page/login/page";
+
 function Login() {
     return ( 
         <>
-            <p className="text-2xl font-bold">Login Page</p>
+            <LoginPage />
         </>
      );
 }
