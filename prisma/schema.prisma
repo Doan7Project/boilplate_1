@@ -12,8 +12,117 @@ datasource db {
   provider = "postgresql"
 }
 
-model Project {
-  id        Int      @id @default(autoincrement())
-  title     String
+model Page {
+  id          String            @id @default(uuid())
+  isPublished Boolean           @default(false)
+
+  translations PageTranslation[]
+  sections     PageSection[]
+
   createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model PageTranslation {
+  id              String @id @default(uuid())
+
+  pageId          String
+  language        String
+
+  slug            String
+
+  metaTitle       String?
+  metaDescription String?
+
+  page Page @relation(fields: [pageId], references: [id], onDelete: Cascade)
+
+  @@unique([language, slug])
+}
+
+model PageSection {
+  id        String @id @default(uuid())
+
+  pageId    String
+
+  type      SectionType
+
+  sortOrder Int
+
+  page Page @relation(fields: [pageId], references: [id], onDelete: Cascade)
+
+  translations PageSectionTranslation[]
+
+  heroSlides HeroSlide[]
+}
+
+model PageSectionTranslation {
+  id         String @id @default(uuid())
+
+  sectionId  String
+
+  language   String
+
+  data       Json
+
+  section PageSection  @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+
+  @@unique([sectionId, language])
+}
+
+model HeroSlide {
+  id          String @id @default(uuid())
+
+  sectionId   String
+
+  mediaId     String
+
+  sortOrder   Int
+
+  section PageSection   @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+
+  media Media  @relation(fields: [mediaId], references: [id])
+
+  translations HeroSlideTranslation[]
+}
+
+model HeroSlideTranslation {
+  id String @id @default(uuid())
+
+  heroSlideId String
+
+  language String
+
+  title String
+
+  subtitle String?
+
+  buttonText String?
+
+  buttonUrl String?
+
+  heroSlide HeroSlide   @relation(fields: [heroSlideId], references: [id], onDelete: Cascade)
+
+  @@unique([heroSlideId, language])
+}
+
+model Media {
+  id String @id @default(uuid())
+
+  fileName String
+
+  url String
+
+  altText String?
+
+  heroSlides HeroSlide[]
+
+}
+
+enum SectionType {
+  HERO_SLIDER
+  FEATURE
+  FAQ
+  PRICING
+  CONTACT_FORM
+  TEAM
 }
