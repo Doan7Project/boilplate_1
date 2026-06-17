@@ -5,10 +5,10 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
-} from "@/src/presentation/components/ui/card";
-import { Input } from "@/src/presentation/components/ui/input";
-import { Label } from "@/src/presentation/components/ui/label";
-import { Button } from "@/src/presentation/components/ui/button";
+} from "@/src/pages/components/ui/card";
+import { Input } from "@/src/pages/components/ui/input";
+import { Label } from "@/src/pages/components/ui/label";
+import { Button } from "@/src/pages/components/ui/button";
 import UseLogin from "./useLogin";
 
 export default function LoginPage() {

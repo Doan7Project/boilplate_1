@@ -1,5 +1,5 @@
-import Footer from "@/src/presentation/layouts/footer";
-import Header from "@/src/presentation/layouts/header";
+import Footer from "@/src/pages/layouts/footer";
+import Header from "@/src/pages/layouts/header";
 import "./globals.css";
 
 

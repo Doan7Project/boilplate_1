@@ -1,4 +1,4 @@
-import LoginPage from "@/src/presentation/landing-page/login/page";
+import LoginPage from "@/src/pages/landing-page/login/page";
 
 function Login() {
     return ( 
